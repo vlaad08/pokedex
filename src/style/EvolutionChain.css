@@ -1,0 +1,46 @@
+/* EvolutionChain.css */
+.evolution-chain-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.evolution-chain {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+}
+
+.evolution-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.evolution-item img {
+    width: 80px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.evolution-item p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.evolution-next-stage {
+    display: none; /* Hide the nested evolution stages */
+}
+
+/* You can adjust media queries if you have specific styles for smaller screens */
+@media (max-width: 600px) {
+    .evolution-chain {
+        flex-direction: column;
+    }
+}
