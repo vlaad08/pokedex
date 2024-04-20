@@ -19,10 +19,6 @@
     color: #ECEFF1;
     font-size: 24px;
 }
-.navigation-block button:hover{
-    scale: 1.7;
-    transition: all .2s;
-}
 .pokemon-grid {
     width: 100%;
     display: grid;
@@ -56,4 +52,8 @@
     margin: 10px 0 0;
     text-transform: capitalize;
     color: #333;
+}
+
+.poke-link{
+    text-decoration: none;
 }

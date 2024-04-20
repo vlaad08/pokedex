@@ -42,7 +42,7 @@ function PokemonList() {
             <button onClick={onPrev}>&#x25C0; </button> { }
             <div className="pokemon-grid">
                 {pokemons.map((pokemon, index) => (
-                    <Link key={index} to={`/pokemon/${pokemon.id}`}>
+                    <Link className='poke-link' key={index} to={`/pokemon/${pokemon.id}`}>
                         <div className="pokemon-card" style={{ backgroundColor: getTypeColor(pokemon.types[0].type.name) }}>
                             <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                             <h3>{pokemon.name}</h3>
