@@ -34,7 +34,7 @@
       "react-app/jest"
     ]
   },
-  "homepage": "https://vlaad08.github.io/pokedex",
+  "homepage": "https://vlad008.github.io/pokedex",
   "browserslist": {
     "production": [
       ">0.2%",
