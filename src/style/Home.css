@@ -1,0 +1,14 @@
+html{
+    background-color: #344955
+}
+
+.homeH1{
+    text-align: center;
+}
+
+.homeH1 h1{
+    margin:90px 0px 90px 0px;
+    font-size:3vw;
+    color: white;
+    letter-spacing: 3px;
+}
