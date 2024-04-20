@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import EvolutionChain from './EvolutionChain'
 import {Link} from "react-router-dom"
-import '../style/Pokemon.css'   // Ensure your CSS file is linked properly
+import '../style/Pokemon.css' 
 
 function Pokemon() {
     const { id } = useParams()

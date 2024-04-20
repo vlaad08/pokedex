@@ -1,7 +1,32 @@
+.navigation-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
 
+.navigation-block button {
+    padding: 0 40px 0 40px;
+    height: 70px;
+    width: 70px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ECEFF1;
+    font-size: 24px;
+}
+.navigation-block button:hover{
+    scale: 1.7;
+    transition: all .2s;
+}
 .pokemon-grid {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(8, minmax(100px, 1fr));
     gap: 10px;
     padding: 20px;
 }

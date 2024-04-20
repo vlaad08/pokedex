@@ -1,63 +1,60 @@
-import React, { useEffect, useState, useRef } from 'react' 
-import '../style/PokemonList.css' 
-import { Link } from 'react-router-dom' 
+import React, { useEffect, useState, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import '../style/PokemonList.css';
 
 function PokemonList() {
-    const [pokemons, setPokemons] = useState([])
-    const [offset, setOffset] = useState(0)
-    const [loading, setLoading] = useState(false)
-    const loader = useRef(null)
+    const [pokemons, setPokemons] = useState([]);
+    const [offset, setOffset] = useState(0);
+    const [loading, setLoading] = useState(false);
+    const loader = useRef(null);
 
     useEffect(() => {
-        setLoading(true) 
+        setLoading(true);
         const fetchPokemons = async () => {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offset}`) 
-            const data = await response.json() 
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=32&offset=${offset}`);
+            const data = await response.json();
             const detailedPokemons = await Promise.all(
                 data.results.map(async (pokemon) => {
-                    const pokemonDetailResponse = await fetch(pokemon.url) 
-                    return await pokemonDetailResponse.json() 
+                    const pokemonDetailResponse = await fetch(pokemon.url);
+                    return await pokemonDetailResponse.json();
                 })
-            ) 
-            setPokemons(prev => [...prev, ...detailedPokemons]) 
-            setLoading(false) 
-        } 
-        fetchPokemons() 
-    }, [offset]) 
+            );
+            setPokemons(detailedPokemons);
+            setLoading(false);
+        };
+        fetchPokemons();
+    }, [offset]);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting) {
-                setOffset(prevOffset => prevOffset + 50) 
-            }
-        }, {
-            rootMargin: '100px',
-        }) 
-        if (loader.current) {
-            observer.observe(loader.current) 
-        }
 
-        return () => { 
-            if (loader.current) {
-                observer.unobserve(loader.current) 
-            }
-        } 
-    }, []) 
+    const limit = 32;
+
+    const onPrev = () => {
+        if (offset >= limit) setOffset(offset - limit);
+    };
+
+    const onNext = () => {
+        setOffset(offset + limit);
+    };
+
 
     return (
-        <div className="pokemon-grid">
-            {pokemons.map((pokemon, index) => (
-                <Link key={index} to={`/pokemon/${pokemon.id}`}>
-                    <div className="pokemon-card" style={{ backgroundColor: getTypeColor(pokemon.types[0].type.name) }}>
-                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                        <h3>{pokemon.name}</h3>
-                    </div>
-                </Link>
-            ))}
-            {loading && <p>Loading more Pokémons...</p>}
-            <div ref={loader} /> 
+        <div className='navigation-block'>
+            <button onClick={onPrev}>&#x25C0; </button> { }
+            <div className="pokemon-grid">
+                {pokemons.map((pokemon, index) => (
+                    <Link key={index} to={`/pokemon/${pokemon.id}`}>
+                        <div className="pokemon-card" style={{ backgroundColor: getTypeColor(pokemon.types[0].type.name) }}>
+                            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                            <h3>{pokemon.name}</h3>
+                        </div>
+                    </Link>
+                ))}
+                {loading && <p>Loading more Pokémons...</p>}
+                <div ref={loader} />
+            </div>
+            <button onClick={onNext}> &#x25B6;</button> { }
         </div>
-    ) 
+    );
 }
 
 function getTypeColor(type) {
@@ -76,8 +73,8 @@ function getTypeColor(type) {
         flying: '#F5F5F5',
         fighting: '#E6E0D4',
         normal: '#F5F5F5'
-    } 
-    return typeColors[type] || '#F5F5F5' 
+    };
+    return typeColors[type] || '#F5F5F5';
 }
 
-export default PokemonList 
+export default PokemonList;
