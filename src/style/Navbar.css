@@ -1,0 +1,29 @@
+
+.navbar {
+    background-color: #333; 
+    color: white;
+    padding: 10px 20px; 
+}
+
+.navList {
+    list-style-type: none; 
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    align-items: center;
+    justify-content: start; 
+}
+.navItem {
+    margin-right: 20px; 
+}
+
+.navLink {
+    color: white; 
+    text-decoration: none; 
+    font-size: 18px; 
+    transition: color 0.3s; 
+}
+
+.navLink:hover, .navLink:focus {
+    color: #4CAF50; 
+}
